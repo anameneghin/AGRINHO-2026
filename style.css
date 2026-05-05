@@ -1,0 +1,93 @@
+/* Definição de Cores e Variáveis Globais */
+:root {
+    --primary: #2e7d32;    /* Verde Agro */
+    --warning: #f57c00;    /* Laranja Alerta */
+    --danger: #d32f2f;     /* Vermelho Perigo */
+    --info: #0288d1;       /* Azul Irrigação */
+    --bg: #f1f8e9;         /* Fundo leve */
+}
+
+/* Configuração Geral da Página */
+body { 
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+    background: var(--bg); 
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px; 
+}
+
+/* O "Card" do Simulador */
+.card { 
+    background: white; 
+    padding: 2.5rem; 
+    border-radius: 20px; 
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1); 
+    width: 100%; 
+    max-width: 450px; 
+}
+
+h2 { 
+    color: var(--primary); 
+    text-align: center; 
+    margin-top: 0;
+    font-size: 1.8rem;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #eee;
+    margin: 20px 0;
+}
+
+/* Grupos de Controle (Sliders) */
+.control-group { 
+    margin-bottom: 2rem; 
+}
+
+label { 
+    display: block; 
+    font-weight: 600; 
+    margin-bottom: 10px; 
+    color: #333; 
+}
+
+.value-display { 
+    float: right; 
+    color: var(--primary);
+    font-size: 1.1rem;
+}
+
+/* Estilização do Slider (Barra de deslizar) */
+input[type="range"] { 
+    width: 100%; 
+    cursor: pointer; 
+    accent-color: var(--primary); 
+    height: 8px;
+    border-radius: 5px;
+    background: #e0e0e0;
+}
+
+/* Caixa de Status Dinâmica */
+.status-box {
+    padding: 20px; 
+    border-radius: 12px; 
+    text-align: center;
+    font-weight: bold; 
+    margin-top: 25px; 
+    transition: all 0.4s ease;
+    border: 1px solid transparent;
+}
+
+/* Texto de Dicas e Sustentabilidade */
+.tips { 
+    font-size: 0.95rem; 
+    color: #555; 
+    margin-top: 20px; 
+    padding: 15px;
+    background: #fafafa;
+    border-left: 4px solid var(--primary);
+    line-height: 1.4;
+}
