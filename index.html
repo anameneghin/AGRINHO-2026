@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Simulador de Estufa Sustentável - Uvas</title>
+    <style>
+        :root {
+            --primary: #2e7d32;
+            --warning: #f57c00;
+            --danger: #d32f2f;
+            --bg: #f1f8e9;
+        }
+
+        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); display: flex; justify-content: center; padding: 20px; }
+        
+        .card { 
+            background: white; padding: 2rem; border-radius: 15px; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1); width: 100%; max-width: 500px; 
+        }
+
+        h2 { color: var(--primary); text-align: center; margin-top: 0; }
+
+        .control-group { margin-bottom: 1.5rem; }
+        
+        label { display: block; font-weight: bold; margin-bottom: 5px; color: #444; }
+        
+        input[type="range"] { width: 100%; cursor: pointer; accent-color: var(--primary); }
+
+        .status-box {
+            padding: 15px; border-radius: 8px; text-align: center;
+            font-weight: bold; margin-top: 20px; transition: 0.3s;
+        }
+
+        .tips { font-size: 0.9rem; color: #666; margin-top: 15px; font-style: italic; }
+        
+        .value-display { float: right; color: var(--primary); }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>🍇 Smart Greenhouse 2026</h2>
+    <p style="text-align: center; font-size: 0.8rem;">Projeto Agrinho: Produção de Uvas</p>
+    <hr>
+
+    <div class="control-group">
+        <label>Temperatura: <span id="tempVal" class="value-display">25</span>°C</label>
+        <input type="range" id="temp" min="0" max="50" value="25" oninput="atualizar()">
+    </div>
+
+    <div class="control-group">
+        <label>Umidade do Ar: <span id="arVal" class="value-display">65</span>%</label>
+        <input type="range" id="ar" min="0" max="100" value="65" oninput="atualizar()">
+    </div>
+
+    <div class="control-group">
+        <label>Umidade do Solo: <span id="soloVal" class="value-display">70</span>%</label>
+        <input type="range" id="solo" min="0" max="100" value="70" oninput="atualizar()">
+    </div>
+
+    <div id="status" class="status-box">Carregando sistema...</div>
+    
+    <div class="tips" id="feedback-text"></div>
+</div>
+
+<script>
+    function atualizar() {
+        // Captura os valores dos inputs
+        const temp = document.getElementById('temp').value;
+        const ar = document.getElementById('ar').value;
+        const solo = document.getElementById('solo').value;
+
+        // Atualiza os números na tela
+        document.getElementById('tempVal').innerText = temp;
+        document.getElementById('arVal').innerText = ar;
+        document.getElementById('soloVal').innerText = solo;
+
+        const statusDiv = document.getElementById('status');
+        const feedback = document.getElementById('feedback-text');
+
+        // Lógica de Simulação
+        let msg = "✅ Ambiente em Equilíbrio!";
+        let cor = "#e8f5e9";
+        let textoCor = "#2e7d32";
+        let dica = "Nesta faixa, a planta maximiza a fotossíntese e economiza recursos.";
+
+        if (temp > 32) {
+            msg = "⚠️ Alerta: Calor Excessivo!";
+            cor = "#fff3e0"; textoCor = "#ef6c00";
+            dica = "Temperatura muito alta pode queimar os brotos. Ativando sistema de nebulização...";
+        } else if (ar > 80) {
+            msg = "🍄 Perigo: Umidade Alta!";
+            cor = "#ffebee"; textoCor = "#c62828";
+            dica = "Cuidado com o Míldio (fungo). Reduza a rega e aumente a ventilação.";
+        } else if (solo < 40) {
+            msg = "💧 Necessidade de Irrigação!";
+            cor = "#e3f2fd"; textoCor = "#1565c0";
+            dica = "Solo seco detectado. Ativando gotejamento de precisão para evitar desperdício.";
+        }
+
+        statusDiv.innerText = msg;
+        statusDiv.style.backgroundColor = cor;
+        statusDiv.style.color = textoCor;
+        feedback.innerText = "Dica Agrinho: " + dica;
+    }
+
+    // Inicia a função ao carregar
+    atualizar();
+</script>
+
+</body>
+</html>
